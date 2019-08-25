@@ -1,6 +1,8 @@
 @extends('Frontend.frontmaster')
 @section('title', 'Peoplesscap | Cv-Create ')
 @section('frntcontent')
+{{-- <link rel="stylesheet" href="{{ asset('frontEnd/form-wizard/css/style.css') }}">
+<link rel="stylesheet" href="{{ asset('frontEnd/form-wizard/fonts/themeify-icons/themify-icons.css') }}"> --}}
 <section class="page-banner-area" style="background: url({{'/'.$data['servicehead']->image}}); background-repeat: no-repeat; background-position: center; background-size: cover; background-attachment: fixed;">
     <div class="container">
         <div class="row">
@@ -31,17 +33,475 @@
     <div class="container">
         <div class="row">
          <div class="col-sm-12 all-s-details">
+            {{-- to be form in tab form --}}
             {{-- {!!Form::open(['method' => 'post', 'url' => '/cvformstore','class' => 'form-horizontal','id'=>'cvcreateform','enctype'=>'multipart/form-data'])!!} --}}
                <form action="{{url('/cvformstore')}}" method="post" id="cvcreateform" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            <div class="box-body">
-                        <div class="row" style="margin:2px;">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="pills-information-tab" data-toggle="pill" href="#pills-information" role="tab" aria-controls="pills-info" aria-selected="true"><i class="fas fa-user"></i> Personal Information</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-education-tab" data-toggle="pill" href="#pills-education" role="tab" aria-controls="pills-education" aria-selected="false"><i class="fas fa-book-open"></i> Educational Qualification</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-experience-tab" data-toggle="pill" href="#pills-experience" role="tab" aria-controls="pills-experience" aria-selected="false"><i class="far fa-file-alt"></i> Experience</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-skills-tab" data-toggle="pill" href="#pills-skills" role="tab" aria-controls="pills-skills" aria-selected="false"><i class="fas fa-archive"></i> Skills</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="pills-reference-tab" data-toggle="pill" href="#pills-reference" role="tab" aria-controls="pills-reference" aria-selected="false"><i class="far fa-share-square"></i> Reference</a>
+                        </li>
+                      </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-information" role="tabpanel" aria-labelledby="pills-information-tab">
+                            <div class="row" style="margin:2px;">
                                 <div class="col-12">
                                     <div class="form-group">
-                                    <label for="sel1" style="font-size: 22px;">Personal Information</label>
+                                        <label for="sel1" style="font-size: 22px;">Personal Information</label>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="title" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Name</label>
+                                        <div class="col-sm-10" style="max-width: 100%">
+                                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter Your Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="birthdate" class="col-sm-4 control-label labelclass"><span style="color:red">*</span> Birthdate</label>
+                                        <div class="col-sm-10" style="max-width: 100%">
+                                            <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="Enter Your Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="haddress" class="col-4 control-label labelclass"><span style="color:red">*</span> Home Address</label>
+                                        <div class="col-10" style="max-width: 100%">
+                                            <input type="text" class="form-control" id="haddress" name="haddress" placeholder="Enter  Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="paddress" class="col-6 control-label labelclass"><span style="color:red">*</span> Permanent Address</label>
+                                        <div class="col-10" style="max-width: 100%">
+                                            <input type="text" class="form-control" id="paddress" name="paddress" placeholder="Enter  Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Phone NO</label>
+                                        <div class="col-10" style="max-width: 100%">
+                                            <input type="text" class="form-control" id="mobile" name="mobile" placeholder="Enter  Mobile Number">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="title" class="col-4 control-label labelclass"><span style="color:red">*</span> Email </label>
+                                        <div class="col-10" style="max-width: 100%">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email Address">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Password(At least 8 characters) </label>
+                                        <div class="col-10" style="max-width: 100%">
+                                            <input type="password" class="form-control" id="matchpassword" name="password" placeholder="Enter password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="title" class="col-8 control-label labelclass"><span style="color:red">*</span> Confirm Password </label>
+                                        <div class="col-10" style="max-width: 100%">
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-radio form-radio-inline">
+                                        <div style="padding-left:6px;font-size: 1rem" class="form-radio-legend "><span style="color:red">*</span> Gender</div>
+                                        <label class="form-radio-label">
+                                            <input name=gender class="form-radio-field" type="radio" required value="Male" />
+                                            <i class="form-radio-button"></i>
+                                            <span>Male</span>
+                                        </label>
+                                        <label class="form-radio-label">
+                                            <input name=gender class="form-radio-field" type="radio" required value="Female" />
+                                            <i class="form-radio-button"></i>
+                                            <span>Female</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="sel1" style="font-size: 22px;">Objective</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea name="objective" class="form-control" rows="4" placeholder="Write Objective...."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label for="sel1" style="font-size: 22px;"> Personal Interest</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea name="interest" class="form-control" rows="4" placeholder="Write About Yourself...."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                                    
+                            <div class="row" style="margin:10px 2px 2px 2px;">
+                                <div class="col-6">
+                                    <div>
+                                        <label for="sel1" class="labelclass">Upload Your Photo</label>
+                                        <input type="file"name='image'>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div>
+                                        <label for="sel1" class="labelclass">Upload Your Cv(doc,pdf)</label>
+                                        <input type="file"name='cv'>
+                                    </div>
+                                </div>
+                            </div> <br>
+
+                            {{-- tabular idea --}}
+                            {{-- <div class="row" style="margin:2px; float:right;">
+                                <div class="col-12">
+                                    <a class="btn btn-info" data-toggle="pill" href="#pills-education" role="tab" aria-selected="true">Next</a>
+                                </div>
+                            </div> --}}
+                        </div>
+                        <div class="tab-pane fade" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab">
+                                <div class="row" style="margin:2px;">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="sel1" style="font-size: 22px;"> Educational Qualification</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="col-12">
+                                               <div class="form-group">
+                                                        <div class="alist col-sm-12 " data-index_no="1000">
+                                                        <div class="aitemWrapper">
+                                                            <table class="table table-bordered amoreTable">
+                                                                <tr>
+                                                                    <th width="5%" class="labelclass">S.N</th>
+                                                                    <th width="20%" class="labelclass">Degree</th>
+                                                                    <th width="20%" class="labelclass">Institution Name</th>
+                                                                    <th width="15%" class="labelclass">Score</th>
+                                                                    <th width="15%" class="labelclass">Location</th>
+                                                                    <th width="15%" class="labelclass">Passing Year</th>
+                                                                    <th width="10%" class="labelclass">Remove</th>
+                                                                </tr>
+                                                                
+                                                                    <tr class="aitem_tr asingle_list">
+                                                                        <td class="day_no labelclass" >1</td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][degree]" placeholder="Enter Degree  Name"><br></td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][instname]" placeholder="Enter Institute Name"><br></td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][cgpa]" placeholder="Enter Score "><br></td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][location]" placeholder="Enter Location "><br></td>
+                                                                        <td><input type="text" class="form-control"  name="academic[0][pyear]" placeholder="Enter Location "><br></td>
+             
+                                                                         <td><span class="aremove" style="background: #ed3610;
+                                                                        padding: 0px 7px;;
+                                                                        color: #fff;
+                                                                        border-radius: 8%;
+                                                                        text-decoration: none;
+                                                                        margin-bottom: 10px;
+                                                                        cursor: pointer;">-</span></td>
+                                                                    </tr>
+                                                                
+                                                            </table>
+                                                            <span  class="aadd_more" style="background: #0d72ba;
+                                                            padding: 0px 7px;;
+                                                            color: #fff;
+                                                            border-radius: 8%;
+                                                            text-decoration: none;
+                                                            margin-bottom: 10px;
+                                                            cursor: pointer;">+</span><br><br>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                        </div>
+                                    </div>
+                        </div>
+                        
+                        <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="pills-experience-tab">
+                                <div class="row" style="margin:2px;">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                            <label for="sel1" style="font-size: 22px;"> Experience</label>
+                                            </div>
+                                        </div>
+                                </div>
+                                 <div class="row" >
+                                  <div class="col-12"> 
+                                    <div class="form-group">
+                                        <div class="list col-sm-12 " data-index_no="1000">
+                                            <div class="itemWrapper">
+                                                <table class="table table-bordered moreTable">
+                                                    <tr>
+                                                        <th width="5%" class="labelclass">S.N</th>
+                                                        <th width="15%" class="labelclass">Job Title</th>
+                                                        <th width="15%" class="labelclass">Company Name</th>
+                                                        <th width="20%" class="labelclass">Responsibilities</th>
+                                                        <th width="15%" class="labelclass">Joined On</th>
+                                                        <th width="15%" class="labelclass">Left On</th>
+                                                        <th width="10%" class="labelclass">Option</th>
+                                                    </tr>
+                                                    
+                                                        <tr class="item_tr single_list">
+                                                            <td class="day_no labelclass" >1</td>
+                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][title]" placeholder="Enter Job Title"><br></td>
+                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][company]" placeholder="Enter Company Name"><br></td>
+                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][responsibilites]" placeholder="Enter Responsibilites"><br></td>
+                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][joinedin]" placeholder="Enter Joined date EX:dd-mm-yy"><br></td>
+                                                            <td><input type="text" class="form-control" id="pro_role" name="experience[0][leftin]" placeholder="Enter Leftin date EX:dd-mm-yy"><br></td>
+                                                            <td><span class="remove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                        </tr>
+                                                    
+                                                </table>
+                                                <span  class="add_more" style="background: #0d72ba;
+                                                padding: 0px 7px;;
+                                                color: #fff;
+                                                border-radius: 8%;
+                                                text-decoration: none;
+                                                margin-bottom: 10px;
+                                                cursor: pointer;">+</span><br><br>
+                                            </div>
+                                        </div>
+                                    </div> 
+                            </div>
+                        </div>
+                        <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                    <label for="sel1" style="font-size: 22px;"> Personal Project</label>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row" >
+                                <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="wlist col-sm-12 " data-index_no="1000">
+                                                <div class="witemWrapper">
+                                                    <table class="table table-bordered wmoreTable">
+                                                        <tr>
+                                                            <th width="5%" class="labelclass">S.N</th>
+                                                            <th width="30%" class="labelclass">Url</th>
+                                                            <th width="50%" class="labelclass">Project Details</th>
+                                                            <th width="10%" class="labelclass">Option</th>
+                                                        </tr>
+                                                        
+                                                            <tr class="witem_tr wsingle_list">
+                                                                <td class="day_no labelclass">1</td>
+                                                                <td><input type="text" class="form-control" id="pro_url" name="project[0][url]" placeholder="Enter Project Url"><br></td>
+                                                                <td><textarea type="text" class="form-control" id="pro_comment" name="project[0][comment]" placeholder="Enter Description About Project"></textarea><br></td>
+                                                               <td><span class="wremove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                            </tr>
+                                                       
+                                                    </table>
+                                                    <span  class="wadd_more" style="background: #0d72ba;
+                                                    padding: 0px 7px;;
+                                                    color: #fff;
+                                                    border-radius: 8%;
+                                                    text-decoration: none;
+                                                    margin-bottom: 10px;
+                                                    cursor: pointer;">+</span><br><br>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                </div>
+                            </div>
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                    <label for="sel1" style="font-size: 22px;"> Personal Achievements</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="aclist col-sm-12 " data-index_no="1000">
+                                                <div class="acitemWrapper">
+                                                    <table class="table table-bordered acmoreTable">
+                                                        <tr>
+                                                            <th width="5%" class="labelclass">S.N</th>
+                                                            <th width="700%" class="labelclass">Achievements</th>
+                                                           <th width="10%" class="labelclass">Remove</th>
+                                                        </tr>
+                                                        
+                                                            <tr class="acitem_tr acsingle_list">
+                                                                <td class="day_no labelclass">1</td>
+                                                                <td><textarea type="text" class="form-control" id="achievement" rows="3" name="achievement[0][achieve]" placeholder="Enter Your personal achievement"></textarea><br></td>
+                                                               <td><span class="acremove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                            </tr>
+                                                       
+                                                    </table>
+                                                    <span  class="acadd_more" style="background: #0d72ba;
+                                                    padding: 0px 7px;;
+                                                    color: #fff;
+                                                    border-radius: 8%;
+                                                    text-decoration: none;
+                                                    margin-bottom: 10px;
+                                                    cursor: pointer;">+</span><br><br>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
+                            <div class="row" style="margin:2px;">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                    <label for="sel1" style="font-size: 22px;"> Skills</label>
+                                    </div>
+                                </div>
+                            </div>
+                <div class="row" >
+                    <div class="col-12">
+                            <div class="form-group">
+                                <div class="sklist col-sm-12 " data-index_no="1000">
+                                    <div class="skitemWrapper">
+                                        <table class="table table-bordered skmoreTable">
+                                            <tr>
+                                                <th width="5%" class="labelclass">S.N</th>
+                                                <th width="700%" class="labelclass">Professional Or Technical Skills</th>
+                                               <th width="10%" class="labelclass">Remove</th>
+                                            </tr>
+                                            
+                                                <tr class="skitem_tr sksingle_list">
+                                                    <td class="day_no labelclass">1</td>
+                                                    <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
+                                                    <td><span class="skremove" style="background: #ed3610;
+                                                    padding: 0px 7px;;
+                                                    color: #fff;
+                                                    border-radius: 8%;
+                                                    text-decoration: none;
+                                                    margin-bottom: 10px;
+                                                    cursor: pointer;">-</span></td>
+                                                </tr>
+                                           
+                                        </table>
+                                        <span  class="skadd_more" style="background: #0d72ba;
+                                        padding: 0px 7px;;
+                                        color: #fff;
+                                        border-radius: 8%;
+                                        text-decoration: none;
+                                        margin-bottom: 10px;
+                                        cursor: pointer;">+</span><br><br>
+                                    </div>
+                                </div>
+                            </div> 
+                    </div>
+                </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-reference" role="tabpanel" aria-labelledby="pills-reference-tab">
+                                <div class="row" style="margin:2px;">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                            <label for="sel1" style="font-size: 22px;"> Reference Name</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" >
+                                        <div class="col-12">
+                                           <div class="form-group">
+                                                    <div class="relist col-sm-12 " data-index_no="1000">
+                                                    <div class="reitemWrapper">
+                                                        <table class="table table-bordered remoreTable">
+                                                            <tr>
+                                                                <th width="5%" class="labelclass">S.N</th>
+                                                                <th width="20%" class="labelclass">Title</th>
+                                                                <th width="20%" class="labelclass">Company</th>
+                                                                <th width="40%" class="labelclass">Contactinfo</th>
+                                                                <th width="15%" class="labelclass">Remove</th>
+                                                            </tr>
+                                                            
+                                                                <tr class="reitem_tr resingle_list">
+                                                                    <td class="day_no labelclass" >1</td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][title]" placeholder="Enter Degree  Name"><br></td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][company]" placeholder="Enter Institute Name"><br></td>
+                                                                    <td><input type="text" class="form-control"  name="reference[0][contactinfo]" placeholder="Enter Score "><br></td>
+                                                                    <td><span class="reremove" style="background: #ed3610;
+                                                                    padding: 0px 7px;;
+                                                                    color: #fff;
+                                                                    border-radius: 8%;
+                                                                    text-decoration: none;
+                                                                    margin-bottom: 10px;
+                                                                    cursor: pointer;">-</span></td>
+                                                                </tr>
+                                                            
+                                                        </table>
+                                                        <span  class="readd_more" style="background: #0d72ba;
+                                                        padding: 0px 7px;;
+                                                        color: #fff;
+                                                        border-radius: 8%;
+                                                        text-decoration: none;
+                                                        margin-bottom: 10px;
+                                                        cursor: pointer;">+</span><br><br>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        {{-- <div class="row" style="margin:2px;">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label for="sel1" style="font-size: 22px;">Personal Information</label>
+                                </div>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
@@ -123,18 +583,17 @@
                                      </label>
                                  </div>
                              </div>
-        
-                        </div>
+                        </div> --}}
                         
                                    
-                        <div class="row" style="margin:2px;">
-                                <div class="col-12">
-                                    <div class="form-group">
+                        {{-- <div class="row" style="margin:2px;">
+                            <div class="col-12">
+                                <div class="form-group">
                                     <label for="sel1" style="font-size: 22px;"> Educational Qualification</label>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="row" >
+                        </div>
+                        <div class="row" >
                             <div class="col-12">
                                    <div class="form-group">
                                             <div class="alist col-sm-12 " data-index_no="1000">
@@ -179,8 +638,8 @@
                                         </div>
                                     </div> 
                             </div>
-                        </div>
-                    <div class="row" style="margin:2px;">
+                        </div> --}}
+                    {{-- <div class="row" style="margin:2px;">
                             <div class="col-12">
                                 <div class="form-group">
                                 <label for="sel1" style="font-size: 22px;"> Experience</label>
@@ -321,8 +780,8 @@
                                 </div>
                             </div> 
                     </div>
-                </div>
-                <div class="row" style="margin:2px;">
+                </div> --}}
+                {{-- <div class="row" style="margin:2px;">
                     <div class="col-12">
                         <div class="form-group">
                         <label for="sel1" style="font-size: 22px;"> Skills</label>
@@ -365,8 +824,8 @@
                                 </div>
                             </div> 
                     </div>
-                </div>
-                <div class="row" style="margin:2px;">
+                </div> --}}
+                {{-- <div class="row" style="margin:2px;">
                     <div class="col-12">
                         <div class="form-group">
                         <label for="sel1" style="font-size: 22px;">Objective</label>
@@ -441,15 +900,15 @@
                                 </div>
                             </div> 
                     </div>
-                </div>
-                    <div class="row" style="margin:2px;">
+                </div> --}}
+                    {{-- <div class="row" style="margin:2px;">
                         <div class="col-12">
                             <div class="form-group">
                             <label for="sel1" class="labelclass">Upload Your Photo</label>
                             <input type="file" class="form-control" name='image'>
                             </div>
                         </div>
-                </div> <br>
+                    </div> <br>
                     
                     <div class="row" style="margin:2px;">
                             <div class="col-12">
@@ -458,7 +917,7 @@
                                 <input type="file" class="form-control" name='cv'>
                                 </div>
                             </div>
-                    </div> <br>
+                    </div> <br> --}}
 
                     <div class="row cbtn" style="margin:2px;">
                         <div class="col-12">
@@ -472,6 +931,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+    {{-- <script src="{{ asset('frontEnd/form-wizard/js/main.js') }}"></script> --}}
 
     <script>
         $(document).ready(function () {
