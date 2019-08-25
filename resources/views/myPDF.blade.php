@@ -61,7 +61,7 @@
 
                 <div class="objective">
                     <div class="left">
-                        <p>WORK HISTORY</p>
+                        <p>WORK HISTORY (Demo)</p>
                     </div>
                     <div class="element">                        
                         <table>
