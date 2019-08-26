@@ -7,6 +7,7 @@
 	
     <body>
         <div class="container">
+            <a href="{{route('pdfdownload',['id'=>$careerInfoByid->id])}}">Download</a>
             <div class="header">
                 <p>{{$careerInfoByid->name}}</p>
                 <p>{{$careerInfoByid->mobile}}</p>
@@ -128,27 +129,19 @@
                 <hr class="line">
 
                 <div class="objective">
-						@if(!empty($careerInfoByid->reference))
-						<?php  $jsonreferencedata = json_decode($careerInfoByid->reference);?>
-					 
-					 
-					 @foreach($jsonreferencedata as $ref)
-					 <tr>
-					
-					 <td>{{$ref->title}}</td>
-					 <td>{{$ref->company}}</td>
-					 <td>{{$ref->contactinfo}}</td>
-					 </tr>
-				   @endforeach
-				   @endif
-                    <div class="left">
+					<div class="left">
                         <p>REFERENCE</p>
                     </div>
+                    @if(!empty($careerInfoByid->reference))
+						<?php  $jsonreferencedata = json_decode($careerInfoByid->reference);?>
+					   @foreach($jsonreferencedata as $ref)
                     <div class="element">
                         <strong>{{$ref->title}}</strong><br>
                         {{$ref->company}} <br>
                         {{$ref->contactinfo}}                        
                     </div>
+                    @endforeach
+                    @endif
                 </div>
                 
             </div>
