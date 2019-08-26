@@ -196,6 +196,11 @@
                                     <a class="btn btn-info" data-toggle="pill" href="#pills-education" role="tab" aria-selected="true">Next</a>
                                 </div>
                             </div> --}}
+                            <div class="row cbtn" style="margin:2px;">
+                                <div class="col-12">
+                                    <button class="btn btn-block btn-info" id="information-education" data-toggle="pill" href="#pills-education" role="tab" onclick="infoToedu()">Next</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="pills-education" role="tabpanel" aria-labelledby="pills-education-tab">
                                 <div class="row" style="margin:2px;">
@@ -249,6 +254,14 @@
                                                         </div>
                                                     </div>
                                                 </div> 
+                                        </div>
+                                    </div>
+                                    <div class="row cbtn" style="margin:2px;">
+                                        <div class="col-6">
+                                            <a class="btn btn-block btn-warning" id="education-personal" data-toggle="pill" href="#pills-information" role="tab" onclick="eduToinfo()">Previous</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-block btn-info" id="education-experience" data-toggle="pill" href="#pills-experience" role="tab" onclick="eduToexp()">Next</button>
                                         </div>
                                     </div>
                         </div>
@@ -396,6 +409,14 @@
                                         </div> 
                                 </div>
                             </div>
+                            <div class="row cbtn" style="margin:2px;">
+                                <div class="col-6">
+                                    <a class="btn btn-block btn-warning" id="experience-education" data-toggle="pill" href="#pills-education" role="tab" onclick="expToedu()">Previous</a>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-block btn-info" id="experience-skill" data-toggle="pill" href="#pills-skills" role="tab" onclick="expToski()">Next</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-skills-tab">
                             <div class="row" style="margin:2px;">
@@ -405,43 +426,51 @@
                                     </div>
                                 </div>
                             </div>
-                <div class="row" >
-                    <div class="col-12">
-                            <div class="form-group">
-                                <div class="sklist col-sm-12 " data-index_no="1000">
-                                    <div class="skitemWrapper">
-                                        <table class="table table-bordered skmoreTable">
-                                            <tr>
-                                                <th width="5%" class="labelclass">S.N</th>
-                                                <th width="700%" class="labelclass">Professional Or Technical Skills</th>
-                                               <th width="10%" class="labelclass">Remove</th>
-                                            </tr>
-                                            
-                                                <tr class="skitem_tr sksingle_list">
-                                                    <td class="day_no labelclass">1</td>
-                                                    <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
-                                                    <td><span class="skremove" style="background: #ed3610;
+                            <div class="row" >
+                                <div class="col-12">
+                                        <div class="form-group">
+                                            <div class="sklist col-sm-12 " data-index_no="1000">
+                                                <div class="skitemWrapper">
+                                                    <table class="table table-bordered skmoreTable">
+                                                        <tr>
+                                                            <th width="5%" class="labelclass">S.N</th>
+                                                            <th width="700%" class="labelclass">Professional Or Technical Skills</th>
+                                                        <th width="10%" class="labelclass">Remove</th>
+                                                        </tr>
+                                                        
+                                                            <tr class="skitem_tr sksingle_list">
+                                                                <td class="day_no labelclass">1</td>
+                                                                <td><input type="text" class="form-control" id="skill"  name="skill[0][competent]" placeholder="Eg:HTML,CSS,JS"><br></td>
+                                                                <td><span class="skremove" style="background: #ed3610;
+                                                                padding: 0px 7px;;
+                                                                color: #fff;
+                                                                border-radius: 8%;
+                                                                text-decoration: none;
+                                                                margin-bottom: 10px;
+                                                                cursor: pointer;">-</span></td>
+                                                            </tr>
+                                                    
+                                                    </table>
+                                                    <span  class="skadd_more" style="background: #0d72ba;
                                                     padding: 0px 7px;;
                                                     color: #fff;
                                                     border-radius: 8%;
                                                     text-decoration: none;
                                                     margin-bottom: 10px;
-                                                    cursor: pointer;">-</span></td>
-                                                </tr>
-                                           
-                                        </table>
-                                        <span  class="skadd_more" style="background: #0d72ba;
-                                        padding: 0px 7px;;
-                                        color: #fff;
-                                        border-radius: 8%;
-                                        text-decoration: none;
-                                        margin-bottom: 10px;
-                                        cursor: pointer;">+</span><br><br>
-                                    </div>
+                                                    cursor: pointer;">+</span><br><br>
+                                                </div>
+                                            </div>
+                                        </div> 
                                 </div>
-                            </div> 
-                    </div>
-                </div>
+                            </div>
+                            <div class="row cbtn" style="margin:2px;">
+                                <div class="col-6">
+                                    <a class="btn btn-block btn-warning" id="skill-experience" data-toggle="pill" href="#pills-experience" role="tab" onclick="skiToexp()">Previous</a>
+                                </div>
+                                <div class="col-6">
+                                    <button class="btn btn-block btn-info" id="skill-reference" data-toggle="pill" href="#pills-reference" role="tab" onclick="skiToref()">Next</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="pills-reference" role="tabpanel" aria-labelledby="pills-reference-tab">
                                 <div class="row" style="margin:2px;">
@@ -490,6 +519,14 @@
                                                     </div>
                                                 </div>
                                             </div> 
+                                        </div>
+                                    </div>
+                                    <div class="row cbtn" style="margin:2px;">
+                                        <div class="col-6">
+                                            <a class="btn btn-block btn-warning" id="reference-skill" data-toggle="pill" href="#pills-skills" role="tab" onclick="refToski()">Previous</a>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class='btn btn-block custombtn' type="submit">SUBMIT</button>
                                         </div>
                                     </div>
                         </div>
@@ -919,11 +956,11 @@
                             </div>
                     </div> <br> --}}
 
-                    <div class="row cbtn" style="margin:2px;">
+                    {{-- <div class="row cbtn" style="margin:2px;">
                         <div class="col-12">
                             <button class='btn btn-block custombtn' type="submit">SUBMIT</button>
                         </div>
-                    </div>
+                    </div> --}}
                 </form>
             {{-- {!!Form::close()!!} --}}
           </div>
@@ -1201,6 +1238,53 @@
             toastr.success("{{ Session::get('message') }}");
            @endif
           </script>
+    <script>
+        // INFORMATION TO EDUCATION ROUTE
+        function infoToedu(){
+            document.getElementById("pills-information-tab").classList.remove("active");
+            document.getElementById("pills-education-tab").classList.add("active");
+        }
+        function eduToinfo(){
+            document.getElementById("pills-education-tab").classList.remove("active");
+            document.getElementById("pills-information-tab").classList.add("active");
+        }
+        // ROUTE ENDS
+
+        // EDUCATION TO EXPERIENCE ROUTE
+        function eduToexp(){
+            document.getElementById("pills-education-tab").classList.remove("active");
+            document.getElementById("pills-experience-tab").classList.add("active");
+        }
+        function expToedu(){
+            document.getElementById("pills-experience-tab").classList.remove("active");
+            document.getElementById("pills-education-tab").classList.add("active");
+        }
+        // ROUTE ENDS
+
+        // EXPERIENCE TO SKILLS ROUTE
+        function expToski(){
+            document.getElementById("pills-experience-tab").classList.remove("active");
+            document.getElementById("pills-skills-tab").classList.add("active");
+        }
+        function skiToexp(){
+            document.getElementById("pills-skills-tab").classList.remove("active");
+            document.getElementById("pills-experience-tab").classList.add("active");
+        }
+        // ROUTE ENDS
+
+        // SKILLS TO REFERENCE ROUTE
+        function skiToref(){
+            document.getElementById("pills-skills-tab").classList.remove("active");
+            document.getElementById("pills-reference-tab").classList.add("active");
+        }
+        function refToski(){
+            document.getElementById("pills-reference-tab").classList.remove("active");
+            document.getElementById("pills-skills-tab").classList.add("active");
+        }
+        // ROUTE ENDS
+
+
+    </script>
 </section>
 
 @endsection
